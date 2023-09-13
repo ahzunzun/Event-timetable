@@ -10,25 +10,35 @@ const client = new MongoClient(uri, {
   }
 });
 
-async function listDatabases(client){
-    databasesList = await client.db().admin().listDatabases();
- 
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
-
-async function createEvent(client, newEvent){
+async function createEvent(client, newEvent) {
     const result = await client.db("Test").collection("events").insertOne(newEvent);
     console.log(`New event created with the following id: ${result.insertedId}`);
+}
+
+async function findEventsOnDate(client, currentDate) {
+    const cursor = await client.db("Test").collection("events").find(
+        { date: currentDate }
+    ).sort({ startTime: 1});
+    const results = await cursor.toArray();
+
+    if (results.length > 0) {
+        console.log(`Found events on current date:`);
+        results.forEach((result, i) => {
+            console.log();
+            console.log(`   Event title: ${result.title}`);
+            console.log(`   Event date: ${result.date}`);
+            console.log(`   Event start time: ${result.startTime}`);
+        });
+    } else {
+        console.log(`None found on the current date.`);
+    }
 }
 
 
 async function run() {
     try {
         await client.connect();
-    
-        await listDatabases(client);
-        
+        /*
         await createEvent(client,
             {
                 title: "Added Event",
@@ -40,7 +50,10 @@ async function run() {
                 fee: "Free"
             }
         );
-        
+        */
+
+        await findEventsOnDate(client, new Date("2023-09-13"));
+
     } catch (e) {
         console.error(e);
     
