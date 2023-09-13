@@ -17,12 +17,30 @@ async function listDatabases(client){
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
+async function createEvent(client, newEvent){
+    const result = await client.db("Test").collection("events").insertOne(newEvent);
+    console.log(`New event created with the following id: ${result.insertedId}`);
+}
+
 
 async function run() {
     try {
         await client.connect();
     
         await listDatabases(client);
+        
+        await createEvent(client,
+            {
+                title: "Added Event",
+                date: new Date("2023-09-13"),
+                startTime: 1100,
+                endTime: 1300,
+                description: "Added",
+                venue: "Room 100",
+                fee: "Free"
+            }
+        );
+        
     } catch (e) {
         console.error(e);
     
