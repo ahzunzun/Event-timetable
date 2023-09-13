@@ -23,7 +23,7 @@ async function findEventsOnDate(client, currentDate) {
 
     if (results.length > 0) {
         console.log(`Found events on current date:`);
-        results.forEach((result, i) => {
+        results.forEach((result) => {
             console.log();
             console.log(`   Event title: ${result.title}`);
             console.log(`   Event date: ${result.date}`);
