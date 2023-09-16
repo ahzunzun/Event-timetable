@@ -8,9 +8,16 @@ if (process.env.NODE_ENV != 'production'){
 // Import dependencies 
 const express = require('express')
 const connectToDb = require("./config/connectToDb");
+const eventRoute = require("./routing/eventRoute")
+const cors = require("cors");
 
 // Create an express app
 const app = express()
+
+// Configure express app
+app.use(express.json());
+app.use(cors()); 
+app.use("/api/events", eventRoute);
 
 // Connect to database
 connectToDb();
@@ -19,6 +26,8 @@ connectToDb();
 app.get('/', (req, res) => {
     res.json({hello: "world"});
 })
+
+
 
 // Start our server
 app.listen(process.env.PORT);

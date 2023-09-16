@@ -1,3 +1,6 @@
+const moment = require("moment");
+const mongoose = require("mongoose");
+
 const eventSchema = new mongoose.Schema({
     title: {type: String, required: [true, "Please write a title for your event"]},
     start: {
@@ -19,9 +22,25 @@ const eventSchema = new mongoose.Schema({
     },
     },
     // Venue attribute
-    venue: {type: String, required: [true, "Please choose a venue for your even"]},
+    venue: {type: String, required: [true, "Please choose a venue for your event"]},
     describe: { type: String},
-})
+});
+
+// Check if venue clashes with time
+eventSchema.pre('save', async function(next) {
+  const event = this;
+  const overlap = await Event.find({
+      venue: event.venue,
+      start: { $lt: event.end },
+      end: { $gt: event.start }
+  });
+
+  if (overlap.length > 0) {
+      throw new Error('There is already an event at this venue during the specified time slot');
+  } else {
+      next();
+  }
+});
 
 const Event = mongoose.model("Event", eventSchema);
 
