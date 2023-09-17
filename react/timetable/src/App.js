@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes,  Route} from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import Logo from "./components/images/logo-1.webp"
+import MyCalendar from './components/Timetable/Timetable';
 
 function App() {
   const [helloWorld, setHelloWorld] = useState(0);
@@ -25,16 +26,21 @@ function App() {
       <div className="Logo">
         <img src={Logo} alt='Long Beach Place'></img>
       </div>
-      <>
+      <div className='App-Navbar'>
         <Router>
           <Navbar/>          
           <Routes>
             <Route path = '/' />
           </Routes>
         </Router>
-      </>
-      <div className='App-Sidebar'>
-        <Sidebar/>
+      </div>
+      <div className='rowB'>
+        <div className='App-Sidebar'>
+          <Sidebar/>
+        </div>
+        <div className='App-Timetable'>
+          <MyCalendar></MyCalendar>
+        </div>
       </div>
       
       

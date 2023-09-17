@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     position: relative;
-    top: 100px;
+    top: 0px;
 }
 
 .calendar {
