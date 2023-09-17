@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes,  Route} from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
+import Logo from "./components/images/logo-1.webp"
 
 function App() {
   const [helloWorld, setHelloWorld] = useState(0);
@@ -21,21 +22,21 @@ function App() {
   }, []);
   return (
     <div className="App">
+      <div className="Logo">
+        <img src={Logo} alt='Long Beach Place'></img>
+      </div>
       <>
         <Router>
-          <Navbar/>
-          <Sidebar/>
+          <Navbar/>          
           <Routes>
             <Route path = '/' />
           </Routes>
         </Router>
       </>
+      <div className='App-Sidebar'>
+        <Sidebar/>
+      </div>
       
-      
-      <header className="App-header">
-        <h1>A Test React Application</h1>
-        <p>Message from back-end server: {helloWorld}</p>
-      </header>
       
     </div>
   );

@@ -23,11 +23,8 @@
   color: #0400ff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+.Logo {
+   justify-content: left;
 }
