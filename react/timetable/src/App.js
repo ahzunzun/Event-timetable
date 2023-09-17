@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import Logo from "./components/images/logo-1.webp"
 import MyCalendar from './components/Timetable/Timetable';
+import EventPopup from './components/EventPopup.js';
 
 function App() {
   const [helloWorld, setHelloWorld] = useState(0);
@@ -40,6 +41,9 @@ function App() {
         </div>
         <div className='App-Timetable'>
           <MyCalendar></MyCalendar>
+        </div>
+        <div className="Event-Pop-Up">
+        <EventPopup />
         </div>
       </div>
       
