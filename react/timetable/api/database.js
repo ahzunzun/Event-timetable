@@ -24,8 +24,8 @@ async function findEventsOnDate(client, currentDate) {
     const results = await cursor.toArray();
 
     if (results.length > 0) {
-        // Currently prints to console, replace the below forEach loop of the results with the code to
-        // display the info instead when aadding to the Event webpage
+        // Currently prints to console, replace the below forEach loop of the results
+        // with the code to display the info instead when aadding to the Event webpage
         console.log(`Found events on current date:`);
         results.forEach((result) => {
             console.log();
@@ -42,7 +42,9 @@ async function findEventsOnDate(client, currentDate) {
 Start and end time integers in 24hr time
 Date in the format new Date("2023-09-13")
 All other variables are strings */
-async function runCreateEvent(eventTitle, eventDate, eStartTime, eEndTime, eDesc, eVenue, eFee) {
+async function runCreateEvent(eventTitle, eventDate, eventStartTime, eventEndTime,
+    eventDesc, eventVenue, eventFee) {
+
     try {
         await client.connect();
         
@@ -50,11 +52,11 @@ async function runCreateEvent(eventTitle, eventDate, eStartTime, eEndTime, eDesc
             {
                 title: eventTitle,
                 date: eventDate,
-                startTime: eStartTime,
-                endTime: eEndTime,
-                description: eDesc,
-                venue: eVenue,
-                fee: eFee
+                startTime: eventStartTime,
+                endTime: eventEndTime,
+                description: eventDesc,
+                venue: eventVenue,
+                fee: eventFee
             }
         );
 
@@ -67,7 +69,8 @@ async function runCreateEvent(eventTitle, eventDate, eStartTime, eEndTime, eDesc
     }
 }
 
-// Function that connects to database and returns a list of events on a specified date (currently prints info to console)
+// Function that connects to database and returns a list of events
+// on a specified date (currently prints info to console)
 async function runFindEvents(date) {
     try {
         await client.connect();
