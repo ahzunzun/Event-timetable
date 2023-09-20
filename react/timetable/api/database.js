@@ -1,4 +1,4 @@
-// Setting up client - do not touch
+// Setting up client - do not change
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://ashughes:randomstring@test.mzctw6w.mongodb.net/?retryWrites=true&w=majority";
 
@@ -24,7 +24,8 @@ async function findEventsOnDate(client, currentDate) {
     const results = await cursor.toArray();
 
     if (results.length > 0) {
-        // Currently prints to console, replace the below forEach loop of the results with the code to display the info instead
+        // Currently prints to console, replace the below forEach loop of the results with the code to
+        // display the info instead when aadding to the Event webpage
         console.log(`Found events on current date:`);
         results.forEach((result) => {
             console.log();
@@ -37,10 +38,10 @@ async function findEventsOnDate(client, currentDate) {
     }
 }
 
-// Function that connects to the database and adds an event with the following information
-// Start and end time integers in 24hr time
-// Date in the format new Date("2023-09-13")
-// All other variables are strings
+/* Function that connects to the database and adds an event with the following information
+Start and end time integers in 24hr time
+Date in the format new Date("2023-09-13")
+All other variables are strings */
 async function runCreateEvent(eventTitle, eventDate, eStartTime, eEndTime, eDesc, eVenue, eFee) {
     try {
         await client.connect();
@@ -81,37 +82,3 @@ async function runFindEvents(date) {
         await client.close();
     }
 }
-
-/*
-// IGNORE
-// Used for testing
-async function run() {
-    try {
-        await client.connect();
-        
-        await createEvent(client,
-            {
-                title: "Added Event",
-                date: new Date("2023-09-13"),
-                startTime: 1100,
-                endTime: 1300,
-                description: "Added",
-                venue: "Room 100",
-                fee: "Free"
-            }
-        );
-        
-
-        await findEventsOnDate(client, new Date("2023-09-13"));
-
-    } catch (e) {
-        console.error(e);
-    
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
-    }
-}
-
-run().catch(console.dir);
-*/
