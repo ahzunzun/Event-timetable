@@ -1,6 +1,7 @@
 const moment = require("moment");
 const mongoose = require("mongoose");
 
+// Describes the database schema
 const eventSchema = new mongoose.Schema({
   // Store the event title attribute in the schema  
   title: {type: String, required: [true, "Please write a title for your event"]},
