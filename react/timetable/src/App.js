@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-
-import { BrowserRouter as Router, Routes,  Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes,  Route} from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import Logo from "./components/images/logo-1.webp"
-import MyCalendar from './components/Timetable/Timetable';
+import MyCalendar from './components/Timetable';
 import EventPopup from './components/EventPopup.js';
 
 function App() {
@@ -22,6 +21,7 @@ function App() {
     getHelloWorld();
     return;
   }, []);
+
   return (
     <div className="App">
       <div className="Logo">
@@ -36,14 +36,11 @@ function App() {
         </Router>
       </div>
       <div className='rowB'>
-        <div className='App-Sidebar'>
-          <Sidebar/>
-        </div>
         <div className='App-Timetable'>
           <MyCalendar></MyCalendar>
         </div>
         <div className="Event-Pop-Up">
-        <EventPopup />
+          <EventPopup/>
         </div>
       </div>
       

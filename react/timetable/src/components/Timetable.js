@@ -6,6 +6,7 @@ import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
+
 const locales = {
   'en-US': enUS,
 }

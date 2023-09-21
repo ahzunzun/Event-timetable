@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import './EventPopup.css'; // Create this CSS file for styling
+import Popup from 'reactjs-popup';
 
 function EventPopup() {
-  const [isOpen, setIsOpen] = useState(false);
 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
 
   return (
-    <div>
-      <button className="popup-button" onClick={togglePopup}>
-        Open Event Popup
-      </button>
-      {isOpen && (
-        <div className="popup">
-          <div className="popup-content">
-            <h2>Event Details</h2>
+    <Popup trigger={<button className='popup-button'>Add Event</button>}>
+      {close => (
+        <div className='popup'>
+        <div className='popup-content'>
+        <h2>Event Details</h2>
             <form>
               <div className="form-group">
                 <label htmlFor="title">Title</label>
@@ -40,14 +34,16 @@ function EventPopup() {
               </div>
               <button type="submit">Create Event</button>
             </form>
-            <button className="close-button" onClick={togglePopup}>
+            <button className="close-button" onClick={close}>
               Close
             </button>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
-  );
+      )}
+        
+    </Popup>
+  )
+
 }
 
 export default EventPopup;
