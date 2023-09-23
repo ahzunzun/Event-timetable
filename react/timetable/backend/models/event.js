@@ -9,7 +9,7 @@ const eventSchema = new mongoose.Schema({
   start: {
      type: Date,
      required: [true, "Please Insert The Start of your event" ],
-     min: [new Date(), "can't be before now!!"],
+     min: [new Date(), "Please select current/future date for start date"],
   },
   // Store event's end date attribute in schema
   end: {
