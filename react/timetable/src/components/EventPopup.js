@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './EventPopup.css'; // Create this CSS file for styling
 import Popup from 'reactjs-popup';
 
-function EventPopup() {
 
+function EventPopup() {
 
   return (
     <Popup trigger={<button className='popup-button'>Add Event</button>}>
