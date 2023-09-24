@@ -3,6 +3,7 @@ import './EventPopup.css'; // Create this CSS file for styling
 import Popup from 'reactjs-popup';
 
 
+
 function EventPopup() {
 
   return (

@@ -1,4 +1,4 @@
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
+import { Calendar, dateFnsLocalizer, momentLocalizer } from 'react-big-calendar'
 import { useState, useEffect } from 'react'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
@@ -8,6 +8,13 @@ import enUS from 'date-fns/locale/en-US'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from 'axios'
 
+const eventsss = [
+  {
+    start:new Date('2023-09-24T10:00:00.000+00:00'),
+    end:new Date('2023-09-24T11:00:00.000+00:00'),
+    title: 'test'
+  }
+]
 
 const locales = {
   'en-US': enUS,
@@ -24,42 +31,45 @@ const localizer = dateFnsLocalizer({
 
 
 const MyCalendar = ({myEventsList}) => {
-  const [data, setData] = useState(null);
-    
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [events,setEvents]= useState(null)
+  const [renderStatus, reRender] = useState(false);
 
-  const fetchData = async () => {
-    const res = await axios.get('http://localhost:3000/api/events/');
-    setData(res.data);
-    /*const convertedDates = await res.data.map(event=>{
-      return{
+  useEffect(() => {
+    fetchEvents();
+  }, [])
+
+
+
+
+  const fetchEvents = async () => {
+    const result = await axios.get('http://localhost:3000/api/events');
+    setEvents(await result.data.map(event=>{
+      return {
         title: event.title,
         start: new Date(event.start) ,
         end: new Date(event.end) ,
         id: event._id,
         describe: event.describe
       }
-    })*/
-    
-  };
-  
+    }));
+  }
   return(
     <div>
-      <h2>Events from backend/DB:</h2>
-      {data && data.map(event => {
+      <h1>Events:</h1>
+      {events && events.map(event=> {
         return (
-          <div key={event._id}>
-            <h3>{event.title}</h3>
+          <div key = {event._id}>
+            <h2>{event.title}</h2>
           </div>
-        );
+        )
+        
+
       })}
       <Calendar
       defaultView={'week'}
-      views = {['month', 'week', 'day']}
+      //views = {['month', 'week', 'day']}
       localizer={localizer}
-      events={myEventsList}
+      events={eventsss}
       startAccessor="start"
       endAccessor="end"
       style={{ height: 650 }}
