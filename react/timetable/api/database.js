@@ -1,6 +1,6 @@
 // Setting up client - do not change
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://ashughes:randomstring@test.mzctw6w.mongodb.net/?retryWrites=true&w=majority";
+const uri = 'mongodb+srv://ashughes:randomstring@test.mzctw6w.mongodb.net/?retryWrites=true&w=majority';
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -13,12 +13,12 @@ const client = new MongoClient(uri, {
 
 // Function that adds a new event to the database
 async function createEvent(client, newEvent) {
-    const result = await client.db("Test").collection("events").insertOne(newEvent);
+    const result = await client.db('Test').collection('events').insertOne(newEvent);
 }
 
 // Function that finds events within the database on a certain date
 async function findEventsOnDate(client, currentDate) {
-    const cursor = await client.db("Test").collection("events").find(
+    const cursor = await client.db('Test').collection('events').find(
         { date: currentDate }
     ).sort({ startTime: 1});
     const results = await cursor.toArray();
