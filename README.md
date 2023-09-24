@@ -11,6 +11,7 @@ npm install react-big-calendar --save
 npm install date-fns --save  
 npm install reactjs-popup --save  
 npm install react-router-dom localforage match-sorter sort-by  
+npm install --save axios
 
 ### For Backend
 npm install cors --save  
