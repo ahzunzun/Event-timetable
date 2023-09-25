@@ -1,6 +1,7 @@
 
 import { event } from "../Axios/event"
 import * as moment from "moment"
+import { addError, removeError } from "./Errorhandler"
 export const showEvent = (event)=>{
     console.log("event to be shown on the modal: ", event)
     return{
@@ -17,7 +18,7 @@ export const showEvents = (events)=>{
     }
 }
 
-export const ShowEventApi = id => async dispatch => {
+export const showEventApi = id => async dispatch => {
      
     //i won't get the event from redux store as it is safer to
     //keep updated with db.
@@ -39,7 +40,7 @@ export const ShowEventApi = id => async dispatch => {
     }
 }
 
-export const ShowEventsApi = () => async dispatch => {
+export const showEventsApi = () => async dispatch => {
      console.log("started fetching the api")
     //i won't get the event from redux store as it is safer to
     //keep updated with db.

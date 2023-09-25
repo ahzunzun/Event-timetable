@@ -13,12 +13,10 @@ function App() {
         <img src={Logo} alt='Long Beach Place'></img>
       </div>
       <div className='App-Navbar'>
-        <Router>
           <Navbar/>          
           <Routes>
             <Route path = '/' />
           </Routes>
-        </Router>
       </div>
       <div className='rowB'>
         <div className='App-Timetable'>

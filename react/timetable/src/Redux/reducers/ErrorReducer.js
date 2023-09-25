@@ -1,7 +1,7 @@
 const initialValue = {}
 
 
-const ErrorReducer = (state=initialValue, action)=>{
+const errorReducer = (state=initialValue, action)=>{
 
     switch (action.type) {
 
