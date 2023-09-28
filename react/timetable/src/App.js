@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Routes,  Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Logo from "./components/images/logo-1.webp"
 import MyCalendar from './components/Timetable';
-import EventPopup from './components/EventPopup.js';
+import EventPopup from './components/addEventPopup.js';
 
 function App() {
   return (

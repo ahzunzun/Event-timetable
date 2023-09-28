@@ -1,45 +1,40 @@
 import React, { useState } from 'react';
-import './EventPopup.css';
+import './addEventPopup.css';
 import Popup from 'reactjs-popup';
 import axios from 'axios';
 
 
 
 function EventPopup() {
-// state
-const [createForm, setCreateForm] = useState({
-  title: '',
-  start: new Date(),
-  end: new Date(),
-  describe: '',
-  venue: ''
-})
-// functions
-const updateCreateFormField = (e) => {
-  const {name, value} = e.target;
-  setCreateForm({
-    ...createForm,
-    [name]: value,
+  // state
+  const [createForm, setCreateForm] = useState({
+    title: '',
+    start: new Date(),
+    end: new Date(),
+    describe: '',
+    venue: ''
   })
-  console.log(createForm);
-}
-const createEvent = async (e) => {
-  e.preventDefault();
-  console.log(createForm);
-  const res = await axios.post("http://localhost:3000/api/events", createForm)
-  
-}
-
-
-
+  // functions
+  const updateCreateFormField = (e) => {
+    const {name, value} = e.target;
+    setCreateForm({
+      ...createForm,
+      [name]: value,
+    })
+  }
+  const createEvent = async (e) => {
+    e.preventDefault();
+    const res = await axios.post("http://localhost:3000/api/events", createForm)
+    
+  }
 
 
   return (
     <Popup trigger={<button className='popup-button'>Add Event</button>}>
       {close => (
         <div className='popup'>
-        <div className='popup-content'>
-        <h2 className="form-title">Event Details</h2>
+          <div className='popup-content'>
+            <h2 className="form-title">Event Details</h2>
             <form onSubmit = {createEvent}>
               <div className="form-group">
                 <label htmlFor="title">Title </label>
@@ -66,8 +61,8 @@ const createEvent = async (e) => {
             <button className="close-button" onClick={close}>
               Close
             </button>
-      </div>
-    </div>
+          </div>
+        </div>
       )}
         
     </Popup>

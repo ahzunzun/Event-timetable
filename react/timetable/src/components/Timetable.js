@@ -27,12 +27,15 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
   const [open, setOpen] = useState(false);
   const [renderStatus, reRender] = useState(false);
   const [events, setEvents] = useState(null);
-
-useEffect(() => {
-  fetchData();
-}, [])
+  const [eventPopup, setEventPopup] = useState(null);
 
 
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+
+  //function to fatch data from backend server
   const fetchData = async () => {
     const res = await axios.get("http://localhost:3000/api/events");
     setEvents(await res.data.map(event=>{
@@ -47,30 +50,34 @@ useEffect(() => {
     console.log(events);
   }
 
-  //calendar might break if there is no events in DB 
+  //shows all event details when event is clicked in the timetable
+  const openEventClick = async (event)=>{
+    setOpen(true)
+    console.log("ahsjaj")
+   
+  }
+
+
+  //calendar might not show if there is no events in DB 
   return(
     <div>
       {events && 
       <Calendar
       defaultView={'week'}
-      //views = {['month', 'week', 'day']}
+      views = {['month', 'week', 'day']}
       localizer={localizer}
       events={events}
       startAccessor="start"
       endAccessor="end"
       style={{ height: 650 }}
+      onSelectEvent={openEventClick}
       />}
       
     </div>
   )
 }
 
-function mapStateToProps({event, events}){
-  return{
-    event,
-    events
-  }
-}
+
 
 
 export default MyCalendar
