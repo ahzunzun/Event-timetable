@@ -20,10 +20,7 @@ function App() {
       </div>
       <div className='rowB'>
         <div className='App-Timetable'>
-          <MyCalendar></MyCalendar>
-        </div>
-        <div className="Event-Pop-Up">
-          <EventPopup/>
+          <MyCalendar/>
         </div>
       </div>
       

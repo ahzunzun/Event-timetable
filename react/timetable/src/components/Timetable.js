@@ -8,6 +8,7 @@ import enUS from 'date-fns/locale/en-US'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from 'axios'
 import ShowEventPopup from './showEventPopup.js'
+import EventPopup from './addEventPopup.js'
 
 
 
@@ -54,9 +55,8 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
   }
 
   //shows all event details when event is clicked in the timetable
-  const openEventClick = async (event)=>{
+  const openEventClick = ()=>{
     setOpen(true);
-    console.log("open");
   }
 
   const closeEventClick = () =>{
@@ -67,6 +67,10 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
   //calendar might not show if there is no events in DB 
   return(
     <div>
+      <EventPopup
+        renderStatus = {renderStatus}
+        reRender = {reRender}
+      />
       {open && <ShowEventPopup
         open = {open}
         handleOpen = {openEventClick}

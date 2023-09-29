@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-function EventPopup() {
+const EventPopup = ({renderStatus, reRender}) => {
   // state
   const [createForm, setCreateForm] = useState({
     title: '',
@@ -25,6 +25,7 @@ function EventPopup() {
   const createEvent = async (e) => {
     e.preventDefault();
     const res = await axios.post("http://localhost:3000/api/events", createForm)
+    reRender(!renderStatus);
     
   }
 
