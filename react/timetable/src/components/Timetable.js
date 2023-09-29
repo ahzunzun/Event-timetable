@@ -7,6 +7,8 @@ import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from 'axios'
+import ShowEventPopup from './showEventPopup.js'
+
 
 
 const locales = {
@@ -27,13 +29,15 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
   const [open, setOpen] = useState(false);
   const [renderStatus, reRender] = useState(false);
   const [events, setEvents] = useState(null);
-  const [eventPopup, setEventPopup] = useState(null);
 
 
   useEffect(() => {
     fetchData();
   }, [])
 
+  useEffect(() => {
+    fetchData();
+  }, [renderStatus])
 
   //function to fatch data from backend server
   const fetchData = async () => {
@@ -47,20 +51,29 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
         describe: event.describe
       }
     }));
-    console.log(events);
   }
 
   //shows all event details when event is clicked in the timetable
   const openEventClick = async (event)=>{
-    setOpen(true)
-    console.log("ahsjaj")
-   
+    setOpen(true);
+    console.log("open");
+  }
+
+  const closeEventClick = () =>{
+    setOpen(false);
   }
 
 
   //calendar might not show if there is no events in DB 
   return(
     <div>
+      {open && <ShowEventPopup
+        open = {open}
+        handleOpen = {openEventClick}
+        handleClose = {closeEventClick}
+        renderStatus = {renderStatus}
+        rerender = {reRender}
+      />}
       {events && 
       <Calendar
       defaultView={'week'}
