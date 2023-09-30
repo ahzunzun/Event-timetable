@@ -55,6 +55,7 @@ const EventPopup = ({renderStatus, reRender}) => {
               </div>
               <div className="form-group">
                 <label htmlFor="description">Event Description </label>
+                <br/>
                 <textarea onChange = {updateCreateFormField} name="describe" rows="4"></textarea>
               </div>
               <button type="submit" >Create Event </button>
