@@ -7,11 +7,11 @@ import axios from "axios"
 const ShowEventPopup = ({open, handleClose, event, renderStatus, rerender}) => {
 
   const [createForm, setCreateForm] = useState({
-    title: '',
-    start: new Date(),
-    end: new Date(),
-    describe: '',
-    venue: ''
+    title: event.title,
+    start: event.start,
+    end: event.end,
+    describe: event.describe,
+    venue: event.venue
   })
 
   const updateCreateFormField = (e) => {
@@ -22,20 +22,24 @@ const ShowEventPopup = ({open, handleClose, event, renderStatus, rerender}) => {
     })
   }
 
-  const updateEvent = async(id) => {
-    //update event
+  const updateEvent = async(e) => {
+    e.preventDefault();
+    await axios.delete(`http://localhost:3000/api/events/${event.id}/delete`)
+    const result = await axios.post(`http://localhost:3000/api/events/`, createForm);
+    handleClose();
+    rerender(!renderStatus);
+
   }
 
   const showDate = (dateTime) => {
     const dt = new Date(dateTime);
     dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset());
-    console.log(dt);
     return dt.toISOString().slice(0,16);
   }
 
 
-  const deleteEvent = async (id) => {
-    const res = await axios.delete(`http://localhost:3000/api/events/${id}/delete`);
+  const deleteEvent = async () => {
+    const res = await axios.delete(`http://localhost:3000/api/events/${event.id}/delete`);
     handleClose();
     rerender(!renderStatus);
   }
@@ -46,7 +50,7 @@ const ShowEventPopup = ({open, handleClose, event, renderStatus, rerender}) => {
     <div className="popup">
       <div className="popup-content">
         <h2 className="form-title">Event Details</h2>
-        <form on onSubmit={console.log("test")}>
+        <form on onSubmit={updateEvent}>
           <div className="form-group">
             <label htmlFor="title">Title </label>
             <input defaultValue={event.title} onChange = {updateCreateFormField} type="text" name="title" />
@@ -68,9 +72,9 @@ const ShowEventPopup = ({open, handleClose, event, renderStatus, rerender}) => {
             <br/>
             <textarea defaultValue = {event.describe} onChange = {updateCreateFormField} name="describe" rows="4"></textarea>
           </div>
-            <button type="submit">Create Event </button>
+            <button type="submit">Update </button>
         </form>
-        <button className="delete-button" onClick = {() => {deleteEvent(event.id)}}>
+        <button className="delete-button" onClick = {() => {deleteEvent()}}>
           Delete
         </button>
         <button className="close-button" onClick={handleClose}>
