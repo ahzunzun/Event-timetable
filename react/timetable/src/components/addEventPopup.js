@@ -6,7 +6,10 @@ import axios from 'axios';
 
 
 const EventPopup = ({renderStatus, reRender}) => {
+  
   // state
+  const [open, setOpen] = useState(false)
+
   const [createForm, setCreateForm] = useState({
     title: '',
     start: new Date(),
@@ -24,16 +27,18 @@ const EventPopup = ({renderStatus, reRender}) => {
   }
   const createEvent = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:3000/api/events", createForm)
+    await axios.post("http://localhost:3000/api/events", createForm)
     //if form is not formatted properley backend will catch and throw an error
+    setOpen(false);
     reRender(!renderStatus);
     
   }
 
 
   return (
-    <Popup trigger={<button className='popup-button'>Add Event</button>}>
-      {close => (
+    <div>
+      <button className='popup-button' onClick = {() => setOpen(true)}>Add Event</button>
+      <Popup open = {open}>
         <div className='popup'>
           <div className='popup-content'>
             <h2 className="form-title">Event Details</h2>
@@ -61,16 +66,14 @@ const EventPopup = ({renderStatus, reRender}) => {
               </div>
               <button type="submit">Create Event </button>
             </form>
-            <button className="close-button" onClick={close}>
+            <button className="close-button" onClick = {() => setOpen(false)}>
               Close
             </button>
           </div>
         </div>
-      )}
-        
     </Popup>
+    </div>
   )
-
 }
 
 export default EventPopup;

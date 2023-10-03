@@ -25,7 +25,7 @@ const ShowEventPopup = ({open, handleClose, event, renderStatus, rerender}) => {
   const updateEvent = async(e) => {
     e.preventDefault();
     await axios.delete(`http://localhost:3000/api/events/${event.id}/delete`)
-    const result = await axios.post(`http://localhost:3000/api/events/`, createForm);
+    await axios.post(`http://localhost:3000/api/events/`, createForm);
     handleClose();
     rerender(!renderStatus);
 
@@ -39,14 +39,14 @@ const ShowEventPopup = ({open, handleClose, event, renderStatus, rerender}) => {
 
 
   const deleteEvent = async () => {
-    const res = await axios.delete(`http://localhost:3000/api/events/${event.id}/delete`);
+    await axios.delete(`http://localhost:3000/api/events/${event.id}/delete`);
     handleClose();
     rerender(!renderStatus);
   }
     
 
   return (
-  <Popup defaultOpen>
+  <Popup open = {open}>
     <div className="popup">
       <div className="popup-content">
         <h2 className="form-title">Event Details</h2>
