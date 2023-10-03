@@ -40,7 +40,7 @@ const EventPopup = ({renderStatus, reRender}) => {
             <form onSubmit = {createEvent}>
               <div className="form-group">
                 <label htmlFor="title">Title </label>
-                <input onChange = {updateCreateFormField} type="text" name="title" />
+                <input  onChange = {updateCreateFormField} type="text" name="title" />
               </div>
               <div className="form-group">
                 <label htmlFor="datetime-local">Start Date </label>
@@ -59,7 +59,7 @@ const EventPopup = ({renderStatus, reRender}) => {
                 <br/>
                 <textarea onChange = {updateCreateFormField} name="describe" rows="4"></textarea>
               </div>
-              <button type="submit" >Create Event </button>
+              <button type="submit">Create Event </button>
             </form>
             <button className="close-button" onClick={close}>
               Close

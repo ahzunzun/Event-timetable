@@ -50,7 +50,8 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
         start: new Date(event.start) ,
         end: new Date(event.end) ,
         id: event._id,
-        describe: event.describe
+        describe: event.describe,
+        venue: event.venue
       }
     }));
   }
