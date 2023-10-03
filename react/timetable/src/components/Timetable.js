@@ -30,6 +30,7 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
   const [open, setOpen] = useState(false);
   const [renderStatus, reRender] = useState(false);
   const [events, setEvents] = useState(null);
+  const [showEvent, setShowEvent] = useState(null);
 
 
   useEffect(() => {
@@ -55,8 +56,9 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
   }
 
   //shows all event details when event is clicked in the timetable
-  const openEventClick = ()=>{
+  const openEventClick = (event)=>{
     setOpen(true);
+    setShowEvent(event);
   }
 
   const closeEventClick = () =>{
@@ -73,6 +75,7 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
       />
       {open && <ShowEventPopup
         open = {open}
+        event={showEvent}
         handleOpen = {openEventClick}
         handleClose = {closeEventClick}
         renderStatus = {renderStatus}

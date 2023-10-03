@@ -25,6 +25,7 @@ const EventPopup = ({renderStatus, reRender}) => {
   const createEvent = async (e) => {
     e.preventDefault();
     const res = await axios.post("http://localhost:3000/api/events", createForm)
+    //if form is not formatted properley backend will catch and throw an error
     reRender(!renderStatus);
     
   }
