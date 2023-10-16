@@ -8,6 +8,7 @@ import enUS from 'date-fns/locale/en-US'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from 'axios'
 import ShowEventPopup from './showEventPopup.js'
+import ShowEventU from './showEventU.js'
 import EventPopup from './addEventPopup.js'
 
 
@@ -74,7 +75,7 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
         renderStatus = {renderStatus}
         reRender = {reRender}
       />
-      {open && <ShowEventPopup
+      {open && <ShowEventU
         open = {open}
         event={showEvent}
         handleOpen = {openEventClick}
