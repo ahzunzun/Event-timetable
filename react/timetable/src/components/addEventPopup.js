@@ -34,6 +34,12 @@ const EventPopup = ({renderStatus, reRender}) => {
     
   }
 
+  const validateForm = (form) => {
+    if (form.title == '') {
+      
+    }
+  }
+
 
   return (
     <div>

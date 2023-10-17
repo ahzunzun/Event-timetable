@@ -72,7 +72,7 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
   return(
     <div>
       <EventPopup
-        renderStatus = {renderStatus}
+        renderStatus = {renderStatus} 
         reRender = {reRender}
       />
       {open && <ShowEventU
