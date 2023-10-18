@@ -27,7 +27,7 @@ const EventPopup = ({renderStatus, reRender}) => {
   }
   const createEvent = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:3000/api/events", createForm)
+    await axios.post("https://it-backend-f9df5768f845.herokuapp.com/api/events", createForm)
     //if form is not formatted properley backend will catch and throw an error
     setOpen(false);
     reRender(!renderStatus);
