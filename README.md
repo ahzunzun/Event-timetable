@@ -1,5 +1,9 @@
 # IT-Project-2023 Timetable section
 
+## Deployed Site
+
+https://timetable-it-proj-ca99028eab8a.herokuapp.com/
+
 ## Getting started
 
 First install node.js
