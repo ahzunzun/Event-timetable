@@ -8,6 +8,7 @@ import enUS from 'date-fns/locale/en-US'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from 'axios'
 import ShowEventPopup from './showEventPopup.js'
+import ShowEventU from './showEventU.js'
 import EventPopup from './addEventPopup.js'
 
 
