@@ -44,7 +44,7 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
 
   //function to fatch data from backend server
   const fetchData = async () => {
-    const res = await axios.get("https://it-backend-f9df5768f845.herokuapp.com/api/events");
+    const res = await axios.get("https://timetable-backend-2fcaf441d652.herokuapp.com/api/events");
     setEvents(await res.data.map(event=>{
       return{
         title: event.title,
@@ -75,7 +75,7 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
         renderStatus = {renderStatus} 
         reRender = {reRender}
       />
-      {open && <ShowEventU
+      {open && <ShowEventPopup
         open = {open}
         event={showEvent}
         handleOpen = {openEventClick}

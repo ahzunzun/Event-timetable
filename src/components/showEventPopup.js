@@ -24,8 +24,8 @@ const ShowEventPopup = ({open, handleClose, event, renderStatus, rerender}) => {
 
   const updateEvent = async(e) => {
     e.preventDefault();
-    await axios.delete(`https://it-backend-f9df5768f845.herokuapp.com/api/events/${event.id}/delete`)
-    await axios.post(`https://it-backend-f9df5768f845.herokuapp.com/api/events/`, createForm);
+    await axios.delete(`https://timetable-backend-2fcaf441d652.herokuapp.com/api/events/${event.id}/delete`)
+    await axios.post(`https://timetable-backend-2fcaf441d652.herokuapp.com/api/events/`, createForm);
     handleClose();
     rerender(!renderStatus);
 
@@ -39,7 +39,7 @@ const ShowEventPopup = ({open, handleClose, event, renderStatus, rerender}) => {
 
 
   const deleteEvent = async () => {
-    await axios.delete(`https://it-backend-f9df5768f845.herokuapp.com/api/events/${event.id}/delete`);
+    await axios.delete(`https://timetable-backend-2fcaf441d652.herokuapp.com/api/events/${event.id}/delete`);
     handleClose();
     rerender(!renderStatus);
   }
