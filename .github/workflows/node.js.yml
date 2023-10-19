@@ -16,3 +16,14 @@ jobs:
         run: npm install
         env:
           CI: true
+
+  backend-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: akhileshns/heroku-deploy@v3.12.14 # This is the action
+        with:
+          appdir: ./backend
+          heroku_api_key: ${{secrets.API_KEY}}
+          heroku_app_name: "timetable-backend" #Must be unique in Heroku
+          heroku_email: ${{secrets.API_EMAIL}}
