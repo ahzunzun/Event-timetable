@@ -8,7 +8,6 @@ import enUS from 'date-fns/locale/en-US'
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from 'axios'
 import ShowEventPopup from './showEventPopup.js'
-import ShowEventU from './showEventU.js'
 import EventPopup from './addEventPopup.js'
 
 
@@ -44,7 +43,7 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
 
   //function to fatch data from backend server
   const fetchData = async () => {
-    const res = await axios.get("https://timetable-backend-2fcaf441d652.herokuapp.com/api/events");
+    const res = await axios.get("https://timetable-backend-ce8b1adf3cf0.herokuapp.com/api/events");
     setEvents(await res.data.map(event=>{
       return{
         title: event.title,
