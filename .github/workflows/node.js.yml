@@ -27,3 +27,13 @@ jobs:
           heroku_api_key: ${{secrets.API_KEY}}
           heroku_app_name: "timetable-backend" #Must be unique in Heroku
           heroku_email: ${{secrets.API_EMAIL}}
+
+  frontend-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: akhileshns/heroku-deploy@v3.12.14 # This is the action
+        with:
+          heroku_api_key: ${{secrets.API_KEY}}
+          heroku_app_name: "timetable-it-proj" #Must be unique in Heroku
+          heroku_email: ${{secrets.API_EMAIL}}
