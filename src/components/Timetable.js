@@ -75,7 +75,7 @@ const MyCalendar = ({myEventsList, showEventApi, showEventsApi}) => {
         renderStatus = {renderStatus} 
         reRender = {reRender}
       />
-      {open && <ShowEventU
+      {open && <ShowEventPopup
         open = {open}
         event={showEvent}
         handleOpen = {openEventClick}
