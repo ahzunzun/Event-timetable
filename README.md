@@ -30,7 +30,7 @@ npm install --save-dev nodemon
 
 ### To start
 
-**Note: When adding events, enter current datetime for start date enter minimum 1 hour duration for end date** 
+**Note: When adding events, enter current datetime for start date and enter minimum 1 hour duration for end date** 
 
 **Backend**
 `cd backend`
