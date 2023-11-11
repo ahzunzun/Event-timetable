@@ -30,7 +30,10 @@ npm install --save-dev nodemon
 
 ### To start
 
-**Note: Frontend and Backend is not connected yet, so run command for backend and frontend in different terminals**
+**Note**
+1. When adding events,
+  a. Enter current datetime for start date
+  b. Enter minimum 1 hour duration for end date 
 
 **Backend**
 `cd backend`
