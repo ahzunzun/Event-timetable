@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
-import { Link, useLocation  } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import Events from './Events';
 
 function Navbar() {
-    const location = useLocation();
-    const [activeSection, setActiveSection] = useState(null);
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const location = useLocation();
 
     useEffect(() => {
         const hash = location.hash.substring(1); // remove the '#' symbol
-        setActiveSection(hash);
         // Scroll to the element
         const element = document.getElementById(hash);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: 'smooth' });
         }
     }, [location]);
-
 
     return (
         <div className="navBar">
@@ -59,15 +57,7 @@ function Navbar() {
                         )}
                     </td>
                     <td onMouseEnter={() => setActiveDropdown('events')} onMouseLeave={() => setActiveDropdown(null)}>
-                        EVENTS
-                        {activeDropdown === 'events' && (
-                            <div className="dropdownContent">
-                                <table>
-                                    <tr><Link to="/Events"><td>Event 1</td></Link></tr>
-                                    <tr><Link to="/Events"><td>Event 2</td></Link></tr>
-                                </table>
-                            </div>
-                        )}
+                      <Link to="/Events">EVENTS</Link>
                     </td>
                     <td onMouseEnter={() => setActiveDropdown('involved')} onMouseLeave={() => setActiveDropdown(null)}>
                         GET INVOLVED
