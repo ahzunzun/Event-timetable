@@ -30,7 +30,7 @@ npm install --save-dev nodemon
 
 ### To start
 
-**Note: When adding events, enter current datetime for start date and enter minimum 1 hour duration for end date** 
+
 
 **Backend**
 `cd backend`
@@ -38,3 +38,7 @@ npm install --save-dev nodemon
 
 **Frontend**
 `npm start run`
+
+### Notes
+1.  When adding events, enter current datetime for start date and enter minimum 1 hour duration for end date
+2.  Navbar has been changed to just timetable and events for easy marking since its related to our group's section
