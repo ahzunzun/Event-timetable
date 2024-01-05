@@ -1,8 +1,12 @@
 # IT-Project-2023 Timetable section
 
-## Deployed Site
+# Overview
+Made this event timetable together with my teammates for our fyp which allow users to add/update/delete events into the timetable
 
-https://timetable-it-proj-ca99028eab8a.herokuapp.com/
+## Teammates
+1. Alexandra Hughes
+2. Kevin Christian Aminatra
+3. Tobias Leonardi
 
 ## Getting started
 
@@ -34,7 +38,7 @@ npm install --save-dev nodemon
 
 **Backend**
 `cd backend`
-`npm run dev`
+`npm run start`
 
 **Frontend**
 `npm start run`
